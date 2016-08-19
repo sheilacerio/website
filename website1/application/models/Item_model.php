@@ -1,91 +1,97 @@
 <?php
 class Item_model extends CI_Model {
 
-	public function __construct()
-	{
-		$this->load->database();
-	}  
-	
-	public function get_items()
-	{
-		$query = $this->db->get('item');
-		
-		//$this->db->select('*');
-		//$this->db->from('item');
-		//$this->db->join('bid', 'item.id = bid.item_id', 'LEFT');
-		//$query = $this->db->get();
-		
-		return $query->result_array();
-	
-	}  
-	
-	public function get_item($id)
-	{
-		$query = $this->db->get_where('item', array('id' => $id));
-		return $query->row_array();
-	} 
-	public function get_item_by_id($id)
-	{ 
-		$query = $this->db->get_where('item', array('id'=> $id)); 
-		return $query->row_array();
-		 }
-	
-	public function set_item()
-	{
-	    $this->load->helper('url');
+  public function __construct()
+  {
+    $this->load->database();
+  }
 
-	    $id = url_title($this->input->post('id'), 'dash', TRUE);
+  public function get_items()
+  {
+    $query = $this->db->get('item');
 
-	    $data = array(  
-			    'id' => $id,  
-	          'name' => $this->input->post('name'),
-	  'categoriesid' => $this->input->post('categoriesid'), 
-    'shipment_title' => $this->input->post('shipment_title'), 
-		     'width' => $this->input->post('width'),     
-			'height' => $this->input->post('height'),     
-			'length' => $this->input->post('length'),     
-			'weight' => $this->input->post('weight'), 
-	       'quality' => $this->input->post('quality'),
-	   'description' => $this->input->post('description'), 
-		  'selectid' => $this->input->post('selectid'),     
-			'pickup' => $this->input->post('pickup'),     
-	    'datepicker' => $this->input->post('datepicker'),     
-		  'delivery' => $this->input->post('delivery'),  
-	   'datepicker1' => $this->input->post('datepicker1'),     
-			'active' => $this->input->post('active')     
-			
-	    ); 
+    //$this->db->select('*');
+    //$this->db->from('item');
+    //$this->db->join('bid', 'item.id = bid.item_id', 'LEFT');
+    //$query = $this->db->get();
 
-	     $this->db->insert('item', $data);
+    return $query->result_array();
+  }
 
-	     	redirect(site_url('item/index'));
-	}
+  public function my_items()
+  {
+    $user = $this->session->userdata;
+    $query = $this->db->get_where('item', array('user_id' => $user['id']));
+    // $query = $this->db->get('item');
 
-	Public function edit($item,$id){
-         $this->db->where('id',$id);
-    	return $this->db->edit('item',$item);
+    //$this->db->select('*');
+    //$this->db->from('item');
+    //$this->db->join('bid', 'item.id = bid.item_id', 'LEFT');
+    //$query = $this->db->get();
 
-	}
+    return $query->result_array();
+  }
+
+  public function get_item($id)
+  {
+    $query = $this->db->get_where('item', array('id' => $id));
+    return $query->row_array();
+  }
+
+  public function set_item($image)
+  {
+      $this->load->helper('url');
 
 
-    public function update($item,$id)
-    {
-    	
-    	$this->db->where('id',$id);
-    	return $this->db->update('item',$data);
-    }
-    public function delete($id){
-    	$this->db->where('id',$id);
-    	return $this->db->delete('item');
-    }
+      // $id = url_title($this->input->post('id'), 'dash', TRUE);
+      $user = $this->session->userdata;
+      $data = array(
+
+            'category' => $this->input->post('category'),
+           'title' => $this->input->post('title'),
+                  'width' => $this->input->post('width'),
+                'height' => $this->input->post('height'),
+                'length' => $this->input->post('length'),
+                'weight' => $this->input->post('weight'),
+                  'quality' => $this->input->post('quality'),
+              'description' => $this->input->post('description'),
+                 'itemtype' => $this->input->post('itemtype'),
+                   'pickuplocation' => $this->input->post('pickuplocation'),
+               'shipmentpickup' => $this->input->post('shipmentpickup'),
+                 'deliverlocation' => $this->input->post('deliverlocation'),
+             'shipmentdeliver' => $this->input->post('shipmentdeliver'),
+             'photo' => $image,
+             'user_id' => $user['id'],
 
 
+      );
+
+      $this->db->insert('item', $data);
+      return $this->db->insert_id();
+  }
+
+
+  public function set_bid($id){
+    $user = $this->session->userdata;
+    $data = array(
+      'item_id' => $id,
+      'message' => $this->input->post('message'),
+      'user_id' => $user['id']
+
+    );
+    $this->db->insert('bids', $data);
+    return $this->db->insert_id();
+
+  }
+
+  public function get_bids($id)
+  {
+    $this->db->select('*');
+    $this->db->from('bids');
+    $this->db->where('item_id', $id);
+    $this->db->join('users', 'users.id = bids.user_id');
+    $query = $this->db->get();
+    // $query = $this->db->get_where('bids', array('item_id' => $id));
+    return $query->result_array();
+  }
 }
-
-
-
-
-
-
-
-

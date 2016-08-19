@@ -13,7 +13,7 @@
 		<title>IShip</title>
          	<link href="<?php echo base_url(); ?>assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
           <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet" type="text/css" />
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
           <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
           <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
           <script>
@@ -25,7 +25,7 @@
      </head>
      <hr>
       <hr>
-       <hr> 
+       <hr>
 <body>
        <!-- Navigation -->
        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -44,40 +44,54 @@
                <div class="collapse navbar-collapse navbar-ex1-collapse">
                    <ul class="nav navbar-nav">
                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                      
+
                        <li>
                            <a  href="#">Carrier</a>
                        </li>
                        <li>
                            <a href="<?php echo base_url('index.php/main/register'); ?>">Sign Up</a>
                        </li>
-                       <li>
-                           <a href="<?php echo site_url('/item/create'); ?>">New Shipping</a>
-                       </li>
+
                        <li>
                           <a href="<?php echo site_url('#'); ?>">Find Shipping</a>
                        </li>
+
+                       <?php if (array_key_exists('id', $user)) { ?>
+                        <?php if ($user['role'] == '0') { ?>
+                          <li>
+                           <a href="<?php echo site_url('item/');?>">My Items</a>
+                          </li>
+                        <?php } ?>
+                      <?php } ?>
+                       <?php if (array_key_exists('id', $user)) { ?>
                         <li>
-                         <a href="<?php echo site_url('main/logout');?>">Log out</a>
-                              </li>
+                         <a href="<?php echo site_url('main/logout');?>">Log out (<?php echo $user['first_name']?> <?php echo $user['last_name']?>)</a>
+                        </li>
+                      <?php } else{ ?>
+                        <li>
+                         <a href="<?php echo site_url('main/login');?>">Log in</a>
+                        </li>
+                        <?php } ?>
+
                    </ul>
                </div>
                <!-- /.navbar-collapse -->
            </div>
            <!-- /.container -->
        </nav>
+
        <!--page-->
     <?php
-            $arr = $this->session->flashdata(); 
+            $arr = $this->session->flashdata();
             if(!empty($arr['flash_message'])){
                 $html = '<div class="bg-warning container flash-message">';
-                $html .= $arr['flash_message']; 
+                $html .= $arr['flash_message'];
                 $html .= '</div>';
                 echo $html;
             }
         ?>
     <div class="container">
         <div class="row">
-        
-        
-         
+
+
+

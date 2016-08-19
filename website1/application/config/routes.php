@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -50,10 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['admin'] = 'admin';   
-$route['client'] = 'client';   
+$route['admin'] = 'admin';
+$route['client'] = 'client';
 $route['client/create'] = 'client/create';
-$route['item/create'] = 'item/create'; 
+$route['item/create'] = 'item/create';
 $route['item/edit'] = 'item/edit';
 $route['item/(:any)'] = 'item/view/$1';
 $route['item'] = 'item';

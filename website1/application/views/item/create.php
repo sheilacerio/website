@@ -1,78 +1,136 @@
-<div class="col-lg-offset-3">
-<h2><?php echo $title; ?></h2>
+<div class="col-lg-8 col-lg-offset-2 well">
+   <div id="container">
 
-<div class="col-lg-4 col-lg-offset-4">
-<?php echo validation_errors(); ?>
+  <div class="page-header">
+    <h1>Shipment Information <small><?php echo $title; ?></small></h1>
+  </div>
 
-<?php echo form_open('item/create'); ?>
+  <?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
-    <label for="name">Name</label>
-    <textarea name="name" rows="1"  cols="50" /></textarea><br/> 
+  <?php echo form_open_multipart('item/create'); ?>
 
-    <label for="width">Categories ID</label>
-    <select name="categoriesid"> 
-        <option value="Household Goods">Household Goods</option>
-        <option value="Vehicle">Vehicle</option>
-        <option value="Moving">Moving</option>
-        <option value="Pets">Pets</option>
-        <option value="Others">Others</option>
-    </select>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <label class="col-md-2 control-label">Category</label>
+      <div class="col-sm-10">
+        <select name="category" class="form-control">
+          <option value="0">Household</option>
+          <option value="1">Tool</option>
+          <option value="2">Vehicle</option>
+           <option value="3">Pets</option>
+           <option value="4">Others</option>
+        </select>
 
-    <label for="shipment_title">Shipment Title</label>
-    <textarea name="shipment_title" rows="2"  cols="50" placeholder="eg. washing"></textarea><br/> 
-  
-    <label for="width">Width</label>
-    <input type="input" name="width" placeholder="cm" /></br> 
+      </div>
+    </div>
 
-    <label for="height">Height</label>
-    <input type="input" name="height" placeholder="cm" /></br>  
+    <div class="form-group">
+      <label  class="col-md-2 control-label">Shipment Title</label>
+      <div class="col-sm-10">
+        <input type="text" name="title" class="form-control" placeholder="Shipment Title">
+      </div>
+    </div>
 
-    <label for="length">Length</label>
-    <input type="input" name="length" placeholder="cm" /></br>  
+    <br />
+    <div class="form-group">
+      <label  class="col-md-2 control-label">Width</label>
+      <div class="col-sm-4">
+        <input type="text" name="width" class="form-control" placeholder="width">
+      </div>
+      <label  class="col-md-2 control-label">Height</label>
+      <div class="col-sm-4">
+        <input type="text" name="height" class="form-control" placeholder="height">
+      </div>
 
-    <label for="weight">Weight</label>
-    <input type="input" name="weight" placeholder="kg" /></br>
+    </div>
 
-    <label for="quality">Quality</label>
-    <input type="input" name="quality" /></br> 
+    <br />
 
-    <label for="description">Description</label>
-    <textarea name="description" rows="2"  cols="50" placeholder="eg. fragile"></textarea><br/> 
+    <div class="form-group">
+      <label  class="col-md-2 control-label">Length</label>
+      <div class="col-sm-4">
+        <input type="text" name="length" class="form-control" placeholder="length">
+      </div>
+      <label  class="col-md-2 control-label">Weight</label>
+      <div class="col-sm-4">
+        <input type="text" name="weight" class="form-control" placeholder="weight">
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label  class="col-md-2 control-label">Quality</label>
+      <div class="col-sm-10">
+        <input type="text" name="quality" class="form-control" placeholder="quality">
+      </div>
+    </div>
 
-    <label for="width">Select</label>
-    <select name="selectid"> 
-        <option value="Palletized">Palletized</option>
-        <option value="Stackable">Stackable</option>
-        <option value="Crated">Crated</option>
-    </select>
+    <div class="form-group">
+      <label  class="col-md-2 control-label">Description</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" name="description"></textarea>
+      </div>
+    </div>
 
-    <label for="pickup">Shipment to be pick up</label>
-    <textarea name="pickup" rows="1"  cols="50"></textarea><br/>
+    <div class="form-group">
+      <label class="col-md-2 control-label">Item Type</label>
+      <div class="col-sm-10">
+        <select name="itemtype" class="form-control">
+          <option value="0">Crated</option>
+          <option value="1">Plattized</option>
+          <option value="2">Stackable</option>
+        </select>
+      </div>
+    </div>
 
-     <label for="datepicker">Date to be pickup</label>
-    <textarea name="datepicker" value="<?php echo set_value('datepicker'); ?>" rows="1"  cols="50"></textarea><br/>
+    <div class="form-group">
+      <label  class="col-md-2 control-label">Pickup Location</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" name="pickuplocation"></textarea>
+      </div>
+    </div>
 
-    <label for="delivery">Shipment to be delivered</label>
-    <textarea name="delivery" rows="1"  cols="50"></textarea><br/> 
+    <div class="form-group">
+      <label  class="col-md-2 control-label">Shipment to be Pickup</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" name="shipmentpickup"></textarea>
+      </div>
+    </div>
 
-    <label for="datepicker1">Date to be delivered</label>
-    <textarea name="datepicker1" value="<?php echo set_value('datepicker1'); ?>" rows="1"  cols="50"></textarea><br/>
+    <div class="form-group">
+      <label  class="col-md-2 control-label">Delivery Location</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" name="deliverlocation"></textarea>
+      </div>
+    </div>
 
-    <label for="image">Image</label></br></br> 
-  <input name="image" accept="image/jpeg" type="file"></br>  
+    <div class="form-group">
+      <label  class="col-md-2 control-label">Shipment to be Delivered</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" name="shipmentdeliver"></textarea>
+      </div>
+    </div>
 
-   <label for="checkbox">Active</label>
-    <input type="checkbox" name="active" value="active"/></br></br>         
-    
-    </br>
-    <input type="submit" name="submit" value="Create Item" />
+    <div class="form-group">
+      <label for="inputPassword3" class="col-md-2 control-label">Image</label>
+      <div class="col-sm-10">
+        <input type="file" name="userfile" class="form-control">
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="form-group">
+      <div class="col-sm-4">
+        <a href="<?php echo site_url('main/item'); ?>"  class="btn btn-warning btn-block">Cancel</a>
+      </div>
+      <div class="col-md-offset-1 col-sm-7">
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </div>
+    </div>
+  </div>
 
-</form> 
-
-<a href="<?php echo site_url('item'); ?>">Cancel</a>
-
-</div>
 
 
-  
-  
+  </form>
+
+
