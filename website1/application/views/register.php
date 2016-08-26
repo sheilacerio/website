@@ -32,6 +32,12 @@
       </label>
     </div>
    </div>
+
+
+    <br />
+    <br />
+    <br />
+
     <?php echo form_submit(array('value'=>'Sign up', 'class'=>'btn btn-lg btn-primary btn-block')); ?>
     <?php echo form_close(); ?>
 </div>

@@ -34,17 +34,10 @@
             <?php echo $item['quality']?>
           </div>
         </div>
+       
         <div class="row">
           <div class="col-md-4">
-            <strong>Description:</strong>
-          </div>
-          <div class="col-md-8">
-            <?php echo $item['description']?>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <strong>itemtype:</strong>
+            <strong>Item type:</strong>
           </div>
           <div class="col-md-8">
             <?php echo $item['itemtype']?>
@@ -62,7 +55,7 @@
 
         <div class="row">
           <div class="col-md-4">
-            <strong>Shipment Pickup:</strong>
+            <strong>Date to be pickup:</strong>
           </div>
           <div class="col-md-8">
             <?php echo $item['shipmentpickup']?>
@@ -80,10 +73,18 @@
 
         <div class="row">
           <div class="col-md-4">
-            <strong>Shipment Deliver:</strong>
+            <strong>Date to be deliver:</strong>
           </div>
           <div class="col-md-8">
             <?php echo $item['shipmentdeliver']?>
+          </div>
+        </div>
+         <div class="row">
+          <div class="col-md-4">
+            <strong>Description:</strong>
+          </div>
+          <div class="col-md-8">
+            <?php echo $item['description']?>
           </div>
         </div>
         <br />
@@ -96,16 +97,19 @@
   </div>
 </div>
 
-<?php foreach($bids  as $bid): ?>
+<?php foreach($bids  as $bid): ?> 
 <div class="row">
   <div class="col-md-12">
       <div class="well">
-      <span class="label label-success"><?php echo $bid['first_name']?> <?php echo $bid['last_name']?> ( <?php echo $bid['email']?> )</span>
+      <span class="label label-success"> <a href="<?php echo site_url('email');?>"><?php echo $bid['first_name']?> <?php echo $bid['last_name']?> ( <?php echo $bid['email']?> )</span></a>
+
+
+
       <?php echo $bid['message']?>
       </div>
   </div>
 </div>
-<?php endforeach; ?>
+   <?php endforeach; ?>
 
 <?php if (array_key_exists('id', $user)) { ?>
   <?php if ($user['role'] == '1') { ?>
@@ -118,7 +122,7 @@
             <label for="exampleInputPassword1">Bid Mesage</label>
             <textarea name="message" class="form-control" placeholder="Enter your message"></textarea>
 
-          </div>
+          </div> 
 
           <button type="submit" class="btn btn-info btn-block">Bid</button>
         </div>
@@ -126,8 +130,36 @@
     </div>
   </div>
   <?php } else{ ?>
-    <div class="alert alert-danger" role="alert">You must be a carrier in order to bid!</div>
+   <div class="alert alert-danger" role="alert">You must be a carrier in order to bid!</div>
 
   <?php } ?>
 <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

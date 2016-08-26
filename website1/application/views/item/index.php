@@ -27,7 +27,9 @@
             <td><?php echo $item['quality']?></td>
             <td><?php echo $item['description']?></td>
             <td>
-              <a href="item/view/<?php echo $item['id']?>" class="btn btn-info btn-sm pull-right" role="button">View</a>
+           <a href="item/update/<?php echo $item['id']?>" class="btn btn-info btn-sm pull-right" role="button">update</a>
+           <a href="item/delete/<?php echo $item['id']?>" class="btn btn-info btn-sm pull-right" role="button">delete</a>
+            <a href="item/view/<?php echo $item['id']?>" class="btn btn-info btn-sm pull-right" role="button">View</a>
             </td>
           </tr>
           <?php endforeach; ?>

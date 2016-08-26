@@ -36,14 +36,7 @@
             <?php echo $item['quality']?>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-4">
-            <strong>Description:</strong>
-          </div>
-          <div class="col-md-8">
-            <?php echo $item['description']?>
-          </div>
-        </div>
+        
         <div class="row">
           <div class="col-md-4">
             <strong>itemtype:</strong>
@@ -88,12 +81,20 @@
             <?php echo $item['shipmentdeliver']?>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-4">
+            <strong>Description:</strong>
+          </div>
+          <div class="col-md-8">
+            <?php echo $item['description']?>
+          </div>
+        </div>
         <br />
         <br />
         <br />
         <br />
 
-        <p><a href="/item/create" class="btn btn-primary" role="button">Create New</a> <a href="/item/list" class="btn btn-warning pull-right" role="button">Goto Listing</a></p>
+        <p><a href="/item/create" class="btn btn-primary" role="button">Create New</a> <a href="views/item" class="btn btn-warning pull-right" role="button">Goto Listing</a></p>
       </div>
     </div>
   </div>

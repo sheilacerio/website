@@ -45,26 +45,28 @@
                    <ul class="nav navbar-nav">
                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 
-                       <li>
-                           <a  href="#">Carrier</a>
-                       </li>
+                     
                        <li>
                            <a href="<?php echo base_url('index.php/main/register'); ?>">Sign Up</a>
                        </li>
 
-                       <li>
-                          <a href="<?php echo site_url('#'); ?>">Find Shipping</a>
-                       </li>
-
+                     
                        <?php if (array_key_exists('id', $user)) { ?>
                         <?php if ($user['role'] == '0') { ?>
                           <li>
                            <a href="<?php echo site_url('item/');?>">My Items</a>
                           </li>
                         <?php } ?>
-                      <?php } ?>
+                      <?php  ?>
                        <?php if (array_key_exists('id', $user)) { ?>
-                        <li>
+                       
+                          <li>
+                           <a href="<?php echo site_url('Profile/index');?>">Profile</a>
+                          </li>
+
+                        <?php } ?>
+                      <?php  ?>
+                      <li>
                          <a href="<?php echo site_url('main/logout');?>">Log out (<?php echo $user['first_name']?> <?php echo $user['last_name']?>)</a>
                         </li>
                       <?php } else{ ?>

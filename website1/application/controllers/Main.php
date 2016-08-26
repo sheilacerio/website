@@ -52,7 +52,7 @@ class Main extends CI_Controller {
 
             $this->form_validation->set_rules('firstname', 'First Name', 'required');
             $this->form_validation->set_rules('lastname', 'Last Name', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
             if ($this->form_validation->run() == FALSE) {
               $data['user'] = $this->session->userdata;
@@ -129,8 +129,8 @@ class Main extends CI_Controller {
                         'token'=>base64_encode($token)
                    );
 
-                    $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
-                    $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');
+                    $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[8]');
+                    $this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|min_length[8]|required|matches[password]');
 
                     if ($this->form_validation->run() == FALSE) {
                         $data['user'] = $this->session->userdata;
@@ -166,7 +166,7 @@ class Main extends CI_Controller {
 
                 public function login()
                 {
-                    $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+                    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
                     $this->form_validation->set_rules('password', 'Password', 'required');
 
                     if($this->form_validation->run() == FALSE) {
@@ -202,7 +202,7 @@ class Main extends CI_Controller {
                 public function forgot()
                 {
 
-                    $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+                    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
                     if($this->form_validation->run() == FALSE) {
                         $this->load->view('header');
@@ -259,8 +259,9 @@ class Main extends CI_Controller {
                         'token'=>base64_encode($token)
                     );
 
-                    $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
-                    $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');
+                     $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[8]');
+                    $this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|min_length[8]|required|matches[password]');
+
 
                     if ($this->form_validation->run() == FALSE) {
                         $data['user'] = $this->session->userdata;

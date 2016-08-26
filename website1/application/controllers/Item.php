@@ -87,12 +87,13 @@ class Item extends CI_Controller {
       else
       {
 
-
         $config['upload_path']          = './uploads/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 100;
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width']         = 75;
+        $config['height']       = 50;
+
 
         $this->load->library('upload', $config);
 
@@ -114,6 +115,7 @@ class Item extends CI_Controller {
           // $data['items'] = $this->item_model->get_items();
           $data['title'] = 'ITEMS';
           $data['image'] = $image_data;
+          $data['user'] = $this->session->userdata;
 
           $item_id = $this->item_model->set_item($image_data['upload_data']['file_name']);
           $data['item'] = $this->item_model->get_item($item_id);
@@ -135,5 +137,76 @@ class Item extends CI_Controller {
   public function update()
   {
 
+      $this->load->helper('form');
+      $this->load->library('form_validation');
+
+      $data['title'] = 'Update an Item';
+     
+
+      // $this->form_validation->set_rules('name', 'Name', 'required');
+      $this->form_validation->set_rules('description', 'Description', 'required');
+
+      if ($this->form_validation->run() === FALSE)
+      {
+        $data['user'] = $this->session->userdata;
+        $this->load->view('header', $data);
+        $this->load->view('item/update');
+        $this->load->view('footer');
+
+      }
+      else
+      {
+
+
+        $config['upload_path']          = './uploads/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width']         = 75;
+        $config['height']       = 50;
+
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('userfile'))
+        {
+          $error = array('error' => $this->upload->display_errors());
+
+          // $this->load->view('upload_form', $error);
+          $data['user'] = $this->session->userdata;
+          $this->load->view('header', $data);
+          $this->load->view('item/update', $error);
+          $this->load->view('footer');
+        }
+        else
+        {
+
+          $image_data = array('upload_data' => $this->upload->data());
+
+          // $data['items'] = $this->item_model->get_items();
+          $data['title'] = 'ITEMS';
+          $data['image'] = $image_data;
+          $data['user'] = $this->session->userdata;
+
+          $item_id = $this->item_model->set_item($image_data['upload_data']['file_name']);
+          $data['item'] = $this->item_model->get_item($item_id);
+
+          $this->load->view('header', $data);
+          $this->load->view('item/success', $data);
+          $this->load->view('footer');
+
+                // $this->load->view('upload_success', $data);
+        }
+
+
+
+      }
+  
+   }
+
+   public function delete($id) {
+     $this->item_model->delete($id);
+     $this->index();
+ 
   }
 }
