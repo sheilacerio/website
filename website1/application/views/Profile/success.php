@@ -10,21 +10,27 @@
         <table class="table table-bordered">
 
           <tbody>
-            <tr>
-              <th>First Name</th>
-              <td><?php echo $profile['fname']?></td>
-              <th>Last Name</th>
-              <td><?php echo $profile['lname']?></td>
-            </tr>
-            <tr>
-              <th>Length</th>
-              <td><?php echo $profile['height']?></td>
-              <th>Weight</th>
-              <td><?php echo $profile['weight']?></td>
-            </tr>
-
+           
+           
           </tbody>
         </table>
+        <div class="row">
+          <div class="col-md-4">
+            <strong>First Name:</strong>
+          </div>
+          <div class="col-md-8">
+            <?php echo $profile['fname']?>
+          </div>
+        </div>
+       
+        <div class="row">
+          <div class="col-md-4">
+            <strong>Last Name:</strong>
+          </div>
+          <div class="col-md-8">
+            <?php echo $profile['lname']?>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-4">
             <strong>Facebook:</strong>
@@ -36,7 +42,7 @@
        
         <div class="row">
           <div class="col-md-4">
-            <strong>Description:</strong>
+            <strong>Address:</strong>
           </div>
           <div class="col-md-8">
             <?php echo $profile['description']?>
@@ -70,7 +76,6 @@
           </div>
         </div>
 
-      <p><a href="/Profile/create" class="btn btn-primary" role="button">Edit Profile</a> 
       </div>
     </div>
   </div>

@@ -25,13 +25,11 @@
             </tbody>
           </table>
           <p><?php echo $item['description']?></p>
-          <p><a href="item/view/<?php echo $item['id']?>" class="btn btn-info btn-block" role="button">View</a> </p>
+
+          <p><a href="item/view/ <?php echo $item['id']?>" class="btn btn-info btn-block" role="button">View</a> </p>
         </div>
       </div>
     </div>
   <?php endforeach; ?>
-
-
-
-
 </div>
+             

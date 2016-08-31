@@ -42,7 +42,7 @@ class Shipper_model extends CI_Model {
                   'phone' => $this->input->post('phone'),
                 'profile' => $this->input->post('profile'),
              'photo' => $image,
-             
+             'user_id' => $this->session->userdata('id')
 
       );
 
@@ -50,4 +50,21 @@ class Shipper_model extends CI_Model {
       $this->db->insert('shipper', $data);
       return $this->db->insert_id();
   }
+
+    public function has_profile($user_id){
+        $this->db
+            ->from('shipper')
+            ->where('user_id', $user_id);
+
+        return $this->db->count_all_results();
+    }
+
+    public function get_shipper_by_user($user_id){
+        $this->db
+            ->from('shipper')
+            ->where('user_id', $user_id);
+
+        $result = $this->db->get()->result_array();
+        return empty($result) ? FALSE : $result[0];
+    }
   }

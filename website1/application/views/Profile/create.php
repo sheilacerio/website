@@ -13,25 +13,16 @@
   
     <div class="form-group">
       <label  class="col-md-2 control-label">First Name</label>
-      <div class="col-sm-2">
-        <input type="text" name="fname" class="form-control" placeholder="Fname">
+      <div class="col-sm-4">
+        <input type="text" name="fname" class="form-control" placeholder="First name">
       </div>
       <label  class="col-md-2 control-label">Last Name</label>
-      <div class="col-sm-2">
-        <input type="text" name="lname" class="form-control" placeholder="Lname">
+      <div class="col-sm-4">
+        <input type="text" name="lname" class="form-control" placeholder="Last name">
       </div>
     </div>
-    <br />
-    <div class="form-group">
-      <label  class="col-md-2 control-label">Height</label>
-      <div class="col-sm-2">
-        <input type="text" name="height" class="form-control" placeholder="cm">
-      </div>
-      <label  class="col-md-2 control-label">Weight</label>
-      <div class="col-sm-2">
-        <input type="text" name="weight" class="form-control" placeholder="kg">
-      </div>
-    </div>
+   
+   
     <br />
     <div class="form-group">
       <label  class="col-md-2 control-label">Facebook</label>
@@ -41,7 +32,7 @@
     </div>
 
     <div class="form-group">
-      <label  class="col-md-2 control-label">Description</label>
+      <label  class="col-md-2 control-label">Address</label>
       <div class="col-sm-8">
         <textarea class="form-control" name="description"></textarea>
       </div>
@@ -82,11 +73,20 @@
     <br />
     <br />
     <br />
+
+  <div class="form-group">
+      <div class="col-sm-4">
+        <a href="<?php echo site_url('index'); ?>"  class="btn btn-warning btn-block">Cancel</a>
+      </div>
     <div class="col-md-offset-1 col-sm-7">
         <button type="submit" class="btn btn-primary btn-block">Submit</button>
       </div>
+    </div>
   </div>
   </form>
+
+
+</div>
 
  
 

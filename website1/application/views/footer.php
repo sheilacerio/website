@@ -6,7 +6,7 @@
 						</div>
 						<div class="text-left">
                      <div class="span12">
-                      <div class="'well">
+                      <div class="'well" style="text-align:center;">
 							<a href="#" class="btn btn-link">Home</a>
 							<span class="bar">|</span>
 							<a href="#" class="btn btn-link">About</a>

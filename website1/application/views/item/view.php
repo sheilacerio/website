@@ -101,7 +101,16 @@
 <div class="row">
   <div class="col-md-12">
       <div class="well">
-      <span class="label label-success"> <a href="<?php echo site_url('email');?>"><?php echo $bid['first_name']?> <?php echo $bid['last_name']?> ( <?php echo $bid['email']?> )</span></a>
+
+        <?php
+        if($bid['role']){
+          $profile_link = 'shipper/index/'.$bid['id'];
+        } else {
+          $profile_link = 'profile/index/'.$bid['id'];
+        }
+
+        ?>
+      <span class="label label-success"> <a href="<?php echo site_url($profile_link);?>"><?php echo $bid['first_name']?> <?php echo $bid['last_name']?> ( <?php echo $bid['email']?> )</span></a>
 
 
 
@@ -129,7 +138,7 @@
       </form>
     </div>
   </div>
-  <?php } else{ ?>
+ <?php } else{ ?>
    <div class="alert alert-danger" role="alert">You must be a carrier in order to bid!</div>
 
   <?php } ?>

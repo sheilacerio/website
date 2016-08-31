@@ -108,7 +108,9 @@ class User_model extends CI_Model {
         {
             $this->load->library('password');
             $this->db->select('*');
-            $this->db->where('email', $post['email']);
+            $this->db
+                ->where('email', $post['email'])
+                ->where('is_active', 1);
             $query = $this->db->get('users');
             $userInfo = $query->row();
 
@@ -155,4 +157,25 @@ class User_model extends CI_Model {
             return true;
        }
 
+
+        public function get_all(){
+            return $this->db->get('users')->result_array();
+        }
+
+        public function delete($user_id){
+            $this->db
+                ->where('id', $user_id)
+                ->delete('users');
+
+            return $this->db->affected_rows();
+        }
+
+        public function change($user_id, $field, $value){
+            $this->db
+                ->set($field, $value)
+                ->where('id', $user_id)
+                ->update('users');
+
+            return $this->db->affected_rows();
+        }
     }

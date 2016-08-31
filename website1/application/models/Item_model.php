@@ -8,14 +8,20 @@ class Item_model extends CI_Model {
 
   public function get_items()
   {
-    $query = $this->db->get('item');
+//    $query = $this->db->get('item');
+
+    // Fetch only items by user that is now banned
+    $this->db
+      ->from('item i')
+      ->join('users u', 'u.id = i.user_id')
+      ->where('u.is_active', 1);
 
     //$this->db->select('*');
     //$this->db->from('item');
     //$this->db->join('bid', 'item.id = bid.item_id', 'LEFT');
     //$query = $this->db->get();
 
-    return $query->result_array();
+    return $this->db->get()->result_array();
   }
 
   public function my_items()
@@ -26,11 +32,11 @@ class Item_model extends CI_Model {
     return $query->result_array();
   }
 
-  public function get_item($id)
+  public function get_item($id) //edit item
   {
        $user = $this->session->userdata;
     $query = $this->db->get_where('item', array('id' => $id));
-    return $query->row_array();
+    return $query->row_array(); //return only
   }
 
   public function set_item($image)

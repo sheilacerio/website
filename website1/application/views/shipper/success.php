@@ -48,11 +48,6 @@
             <?php echo $shipper['profile']?>
           </div>
         </div>
-
-  
-  
-
-        <p><a href="/shipper/create" class="btn btn-primary" role="button">Create New</a> 
      
 
        </div>

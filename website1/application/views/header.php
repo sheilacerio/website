@@ -13,19 +13,22 @@
 		<title>IShip</title>
          	<link href="<?php echo base_url(); ?>assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
           <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet" type="text/css" />
+          <link href="<?php echo base_url(); ?>assets/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url(); ?>assets/css/admin.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url(); ?>assets/css/helpers.css" rel="stylesheet" type="text/css" />
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
           <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
           <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+            <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
           <script>
   $( function() {
     $( "#datepicker" ).datepicker();
-     $( "#datepicker1" ).datepicker1();
+     $( "#datepicker1" ).datepicker();
   } );
   </script>
      </head>
      <hr>
       <hr>
-       <hr>
 <body>
        <!-- Navigation -->
        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -59,11 +62,18 @@
                         <?php } ?>
                       <?php  ?>
                        <?php if (array_key_exists('id', $user)) { ?>
-                       
+                            <?php
+                               if($this->session->userdata('role'))
+                                   $profile_link = 'shipper/index';
+                               else
+                                   $profile_link = 'profile/index';
+                           ?>
                           <li>
-                           <a href="<?php echo site_url('Profile/index');?>">Profile</a>
+                           <a href="<?php echo site_url($profile_link);?>">Profile</a>
                           </li>
-
+                           <li>
+                               <a href="<?php echo site_url('message');?>">Messages</a>
+                           </li>
                         <?php } ?>
                       <?php  ?>
                       <li>
@@ -73,6 +83,9 @@
                         <li>
                          <a href="<?php echo site_url('main/login');?>">Log in</a>
                         </li>
+                       <li>
+                           <a href="<?php echo site_url('admin/login');?>">Admin</a>
+                       </li>
                         <?php } ?>
 
                    </ul>

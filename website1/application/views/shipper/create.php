@@ -13,7 +13,7 @@
     <div class="form-group">
      
     <div class="form-group">
-      <label  class="col-md-2 control-label">Company Name</label>
+      <label  class="col-md-2 control-label">Company Name:</label>
       <div class="col-sm-8">
         <input type="text" name="companyname" class="form-control">
       </div>
@@ -21,7 +21,7 @@
 
     <br />
     <div class="form-group">
-      <label  class="col-md-2 control-label">email</label>
+      <label  class="col-md-2 control-label">Email:</label>
       <div class="col-sm-8">
         <input type="text" name="email" class="form-control" placeholder="email">
         </div>
@@ -29,7 +29,7 @@
      
     <br />
     <div class="form-group">
-      <label  class="col-md-2 control-label">Contact No</label>
+      <label  class="col-md-2 control-label">Contact No:</label>
       <div class="col-sm-8">
         <input type="text" name="phone" class="form-control" placeholder="Phone/Cel No.">
       </div>
@@ -37,7 +37,7 @@
       <br />
 
     <div class="form-group">
-      <label  class="col-md-2 control-label">Company Profile</label>
+      <label  class="col-md-2 control-label">Company Profile:</label>
       <div class="col-sm-8">
         <textarea class="form-control" name="profile"></textarea>
       </div>
@@ -53,6 +53,10 @@
     <br />
     <br />
     <br />
+     <div class="form-group">
+      <div class="col-sm-4">
+        <a href="<?php echo site_url('Shipper'); ?>"  class="btn btn-warning btn-block">Cancel</a>
+      </div>
    
       <div class="col-md-offset-1 col-sm-7">
         <button type="submit" class="btn btn-primary btn-block">Submit</button>

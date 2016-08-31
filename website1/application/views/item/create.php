@@ -89,7 +89,7 @@
     <div class="form-group">
       <label  class="col-md-2 control-label">Date to be Pickup</label>
       <div class="col-sm-8">
-        <textarea class="form-control" name="shipmentpickup"></textarea>
+        <input type="text" class="form-control form-date" name="shipmentpickup"/>
       </div>
     </div>
 
@@ -103,7 +103,7 @@
     <div class="form-group">
       <label  class="col-md-2 control-label">Date to be Delivered</label>
       <div class="col-sm-8">
-        <textarea class="form-control" name="shipmentdeliver"></textarea>
+        <input type="text" class="form-control form-date" name="shipmentdeliver"/>
       </div>
     </div>
 
@@ -113,7 +113,7 @@
         <input type="file" name="userfile"  class="form-control">
       </div>
     </div>
-    <br /
+    <br />
     <br />
     <br />
     <div class="form-group">
@@ -127,4 +127,8 @@
   </div>
   </form>
 
-
+<script>
+$(function(){
+  $('.form-date').datepicker();
+});
+</script>

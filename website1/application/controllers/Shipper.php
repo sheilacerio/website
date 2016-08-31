@@ -11,11 +11,20 @@ class Shipper extends CI_Controller {
     //  $this->load->model('User_model', 'user_model', TRUE);
        $this->load->helper(array('form', 'url'));
   } 
-  public function index()
+  public function index($user_id = FALSE)
   {
-    $data['user'] = $this->session->userdata;
-    $data['shipper'] = $this->shipper_model->my_shippers(); 
-    $data['title'] = 'Shipper';  
+
+      if(!$user_id){
+          $user_id = $this->session->userdata('id');
+      }
+      $data['user'] = $this->session->userdata;
+      $data['has_profile'] = $this->shipper_model->has_profile($user_id);
+
+      if($data['has_profile']){
+          $data['shipper'] = $this->shipper_model->get_shipper_by_user($user_id);
+      }
+      $data['own'] = $this->session->userdata('id') == $user_id;
+        $data['title'] = 'Shipper';
     
     $this->load->view('header', $data);
     $this->load->view('shipper/index', $data);
@@ -90,9 +99,7 @@ public function create()
 
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 100;
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
+        $config['max_size']             = 1024;
 
         $this->load->library('upload', $config);
 
@@ -112,9 +119,9 @@ public function create()
           $image_data = array('upload_data' => $this->upload->data());
 
           // $data['items'] = $this->item_model->get_items();
-       / $data['title'] = 'Shipper';
+        $data['title'] = 'Shipper';
           $data['image'] = $image_data;
-         $data['user'] = $this->session->userdata;
+         $data['user'] = $this->session->all_userdata();
 
           $id = $this->shipper_model->set_shipper($image_data['upload_data']['file_name']);
           $data['shipper'] = $this->shipper_model->get_shipper($id);

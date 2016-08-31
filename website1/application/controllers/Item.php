@@ -62,8 +62,7 @@ class Item extends CI_Controller {
       $this->load->view('item/view', $data);
       $this->load->view('footer');
     }
-
-
+    
   }
 
   public function create()
@@ -131,6 +130,7 @@ class Item extends CI_Controller {
 
       }
   }
+  
 
 
 
