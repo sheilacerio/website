@@ -9,7 +9,7 @@ class Item extends CI_Controller {
     parent::__construct();
     $this->load->model('item_model');
       $this->load->model('User_model', 'user_model', TRUE);
-      // $this->load->helper('url_helper');
+      $this->load->helper('url_helper');
       $this->load->helper(array('form', 'url'));
   }
 
@@ -27,7 +27,7 @@ class Item extends CI_Controller {
   {
 
     $this->load->helper('form');
-    $this->load->library('form_validation');
+    //$this->load->library('form_validation');
 
 
     // $this->form_validation->set_rules('name', 'Name', 'required');
@@ -134,20 +134,24 @@ class Item extends CI_Controller {
 
 
 
-  public function update()
+  public function update($id)
   {
 
       $this->load->helper('form');
       $this->load->library('form_validation');
+       
 
       $data['title'] = 'Update an Item';
-     
 
       // $this->form_validation->set_rules('name', 'Name', 'required');
       $this->form_validation->set_rules('description', 'Description', 'required');
+      //$data['item'] = $this->item_model->get_item($item_id);
+       
+ 
 
       if ($this->form_validation->run() === FALSE)
       {
+        $data['item'] = $this->item_model->get_item($id);
         $data['user'] = $this->session->userdata;
         $this->load->view('header', $data);
         $this->load->view('item/update');
@@ -172,7 +176,7 @@ class Item extends CI_Controller {
         {
           $error = array('error' => $this->upload->display_errors());
 
-          // $this->load->view('upload_form', $error);
+          //$this->load->view('upload_form', $error);
           $data['user'] = $this->session->userdata;
           $this->load->view('header', $data);
           $this->load->view('item/update', $error);
@@ -183,13 +187,14 @@ class Item extends CI_Controller {
 
           $image_data = array('upload_data' => $this->upload->data());
 
-          // $data['items'] = $this->item_model->get_items();
+         //$data['items'] = $this->item_model->get_item();
           $data['title'] = 'ITEMS';
           $data['image'] = $image_data;
-          $data['user'] = $this->session->userdata;
+         
 
           $item_id = $this->item_model->set_item($image_data['upload_data']['file_name']);
-          $data['item'] = $this->item_model->get_item($item_id);
+          $data['item'] = $this->item_model->get_item($id);
+           $data['user'] = $this->session->userdata;
 
           $this->load->view('header', $data);
           $this->load->view('item/success', $data);

@@ -8,13 +8,14 @@ class Item_model extends CI_Model {
 
   public function get_items()
   {
-//    $query = $this->db->get('item');
+    //$query = $this->db->get('item');
 
     // Fetch only items by user that is now banned
     $this->db
-      ->from('item i')
-      ->join('users u', 'u.id = i.user_id')
-      ->where('u.is_active', 1);
+      ->select('item.*')
+      ->from('item')
+      ->join('users', 'users.id = user_id','left')
+      ->where('users.is_active', 1);
 
     //$this->db->select('*');
     //$this->db->from('item');
@@ -105,9 +106,14 @@ class Item_model extends CI_Model {
 //
  // }
   public function update ($id, $data) {
-    $user = $this->session->userdata;
+    
      $this->db->where('id', $id);
-      return $this->db->update('item',$data);
+     $this->db->update('item', $data);
+
+
+
+
+
 
   }
   public function delete($id) {

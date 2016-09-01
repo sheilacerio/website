@@ -20,15 +20,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="<?=base_url('admin/users')?>" class="navbar-brand">iShip</a>
+                <a href="<?=base_url('#')?>" class="navbar-brand">iShip</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="<?=base_url('admin/users')?>">Users</a>
-                    </li>
+                    
 <!--                    <li>-->
 <!--                        <a href="--><?//=base_url('admin/items')?><!--">Items</a>-->
 <!--                    </li>-->

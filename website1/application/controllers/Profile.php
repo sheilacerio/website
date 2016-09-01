@@ -8,7 +8,7 @@ class Profile extends CI_Controller {
  {
     parent::__construct();
     $this->load->model('profile_model');
-//$this->load->model('User_model', 'user_model', TRUE);
+
       $this->load->helper(array('form', 'url'));
   } 
   public function index($user_id = FALSE)
@@ -37,41 +37,17 @@ class Profile extends CI_Controller {
   public function view($id = NULL){
 
  $this->load->helper('form');
-  // $this->load->library('form_validation');
-
-
-    // $this->form_validation->set_rules('name', 'Name', 'required');
-   // $this->form_validation->set_rules('message', 'Message', 'required');
-    // $this->form_validation->set_rules('message', 'Message', 'required');
-
-  //  if ($this->form_validation->run() === FALSE)
-   // {
-      //$data['profile'] = $this->profile_model->get_profile($id);
-      //$data['bids'] = $this->profile_model->get_profile($id);
-      //$data['title'] = 'ITEM';
-     // $data['id'] = $id;
-    //  $data['user'] = $this->session->userdata;
-    //  $this->load->view('header', $data);
-     // $this->load->view('Profile/view', $data);
-    //  $this->load->view('footer');
-
- //   }
-  //  else
-   // {
-
-      //$bid_id = $this->item_model->set_profile($id);
+  
       $data['profile'] = $this->item_model->get_profile($id);
-     // $data['bids'] = $this->item_model->get_bids($id);
-
-    //  $data['title'] = 'ITEM';
+   
      $data['id'] = $id;
-     // $data['newitem'] = true;
+   
       $data['user'] = $this->session->userdata;
 
       $this->load->view('header', $data);
       $this->load->view('Profile/view', $data);
       $this->load->view('footer');
-  //  }
+  
 
 
   }
@@ -118,6 +94,6 @@ public function create()
 
 
 
-     //}
+     
   }
 }

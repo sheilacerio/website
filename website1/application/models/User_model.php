@@ -107,22 +107,22 @@ class User_model extends CI_Model {
         public function checkLogin($post)
         {
             $this->load->library('password');
-            $this->db->select('*');
-            $this->db
-                ->where('email', $post['email'])
+           $this->db->select('*');
+          $this->db
+               ->where('email', $post['email'])
                 ->where('is_active', 1);
             $query = $this->db->get('users');
-            $userInfo = $query->row();
+           $userInfo = $query->row();
 
-            if(!$this->password->validate_password($post['password'], $userInfo->password)){
-                error_log('Unsuccessful login attempt('.$post['email'].')');
-                return false;
-            }
+        //   if(!$this->password->validate_password($post['password'], $userInfo->password)){
+          //    error_log('Unsuccessful login attempt('.$post['email'].')');
+         //   return false;
+        //    }
 
-            $this->updateLoginTime($userInfo->id);
+        //  $this->updateLoginTime($userInfo->id);
 
-            unset($userInfo->password);
-            return $userInfo;
+       //  unset($userInfo->password);
+        return $userInfo;
         }
 
         public function updateLoginTime($id)

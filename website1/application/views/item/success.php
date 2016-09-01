@@ -94,7 +94,7 @@
         <br />
         <br />
 
-        <p><a href="/item/create" class="btn btn-primary" role="button">Create New</a> <a href="views/item" class="btn btn-warning pull-right" role="button">Goto Listing</a></p>
+        <p><a href="/item/create" class="btn btn-primary" role="button">Create New</a> 
       </div>
     </div>
   </div>

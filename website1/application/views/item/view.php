@@ -28,7 +28,7 @@
         </table>
         <div class="row">
           <div class="col-md-4">
-            <strong>Quality:</strong>
+            <strong>Quantity:</strong>
           </div>
           <div class="col-md-8">
             <?php echo $item['quality']?>

@@ -7,21 +7,21 @@
 						<div class="text-left">
                      <div class="span12">
                       <div class="'well" style="text-align:center;">
-							<a href="#" class="btn btn-link">Home</a>
+							<a href="<?php echo base_url(); ?>">Home</a>
 							<span class="bar">|</span>
-							<a href="#" class="btn btn-link">About</a>
+							<a href="<?php echo base_url('/about'); ?>">About</a>
 							<span class="bar">|</span>
-							<a href="#" class="btn btn-link">Contact Us</a>
+							<a href="<?php echo base_url('/contact'); ?>">Contact Us</a>
 							<span class="bar">|</span>
-							<a href="#" class="btn btn-link">FAQ's</a>
+							<a href="<?php echo base_url('/faq'); ?>">FAQ's</a>
 						
                  
                   
                   <center>Copyright@2016 IShip and its licensor. All right reserved</center>
                   
-						<center>	<a href="#" class="btn btn-link">IShip User Agreement</a>
+						<center>	<a href="<?php echo base_url('/agree'); ?>">IShip User Agreement</a>
 							<span class="bar">|</span>
-							<a href="#" class="btn btn-link">Privacy Policy</a></center>
+							<a href="<?php echo base_url('/privacy'); ?>">Privacy Policy</a></center>
 						</div>
 						</div>
 					</div>

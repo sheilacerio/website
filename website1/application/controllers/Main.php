@@ -20,9 +20,9 @@ class Main extends CI_Controller {
         }
         public function index()
           {
-                    // if(empty($this->session->userdata['email'])){
+                   //  if(empty($this->session->userdata['email'])){
                     //     redirect(site_url('/main/login/'));
-                    // }
+                   //  }
                     /*front page*/
                     $data['user'] = $this->session->userdata;
                     $data['items'] = $this->item_model->get_items();
@@ -129,7 +129,7 @@ class Main extends CI_Controller {
                         'token'=>base64_encode($token)
                    );
 
-                    $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[8]');
+                    $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[12]');
                     $this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|min_length[8]|required|matches[password]');
 
                     if ($this->form_validation->run() == FALSE) {
@@ -205,7 +205,7 @@ class Main extends CI_Controller {
                     $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
                     if($this->form_validation->run() == FALSE) {
-                        $this->load->view('header');
+                     //   $this->load->view('header');
                         $this->load->view('forgot');
                         $this->load->view('footer');
                     }else{
@@ -259,7 +259,7 @@ class Main extends CI_Controller {
                         'token'=>base64_encode($token)
                     );
 
-                     $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[8]');
+                     $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[12]');
                     $this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|min_length[8]|required|matches[password]');
 
 
